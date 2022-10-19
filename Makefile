@@ -8,4 +8,4 @@ DOCKER_SOCK_MOUNT := type=bind,source=/var/run/docker.sock,target=/var/run/docke
 
 .PHONY: bash
 bash:
-	docker run -it --entrypoint /bin/sh --workdir /app --mount $(MOUNT_OPTION) --mount $(DOCKER_SOCK_MOUNT) hashicorp/terraform:$(TERRAFORM_VERSION)
+	docker run -it --rm --entrypoint /bin/sh --workdir /app --mount $(MOUNT_OPTION) --mount $(DOCKER_SOCK_MOUNT) hashicorp/terraform:$(TERRAFORM_VERSION)

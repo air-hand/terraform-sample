@@ -1,4 +1,5 @@
 name: Terraform CI
+run-name: CI on ${{ github.ref }}
 on: [push]
 jobs:
   tflint:

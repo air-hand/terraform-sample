@@ -18,6 +18,8 @@ jobs:
 
       - name: Init tflint
         run: tflint --init
+        working-directory: ./src/
 
       - name: Run tflint
         run: tflint -f compact
+        working-directory: ./src/

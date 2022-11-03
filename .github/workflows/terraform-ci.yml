@@ -1,7 +1,23 @@
 name: Terraform CI
 run-name: "CI: ${{ github.event.head_commit.message }}"
-on: [push]
+on:
+  push:
+  pull_request:
 jobs:
+  tfsec:
+    name: tfsec with reviewdog
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run tfsec
+        uses: reviewdog/actions-tfsec@master
+        with:
+          github_token: ${{ secrets.github_token }}
+          working_directory: src
+          fail_on_error: true
+
   tflint:
     name: tflint runner
     runs-on: ubuntu-latest
